@@ -60,6 +60,8 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
         if (coordinate != null) {
             panorama.setPosition(coordinate, StreetViewSource.OUTDOOR);
             if (camera != null) {
+                // Set the initial camera direction so we don't have a frame or two looking the wrong way.
+                panorama.animateTo(camera, 0);
                 panorama.setOnStreetViewPanoramaChangeListener(new StreetViewPanorama.OnStreetViewPanoramaChangeListener() {
                     @Override
                     public void onStreetViewPanoramaChange(StreetViewPanoramaLocation location) {
