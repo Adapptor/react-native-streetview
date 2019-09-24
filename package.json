@@ -4,6 +4,7 @@
 	"version": "0.1.4",
 	"description": "Google Panorama/StreetView component for React Native",
 	"author": "Amit Palomo <amit@nester.co.il>",
+  "homepage": "https://github.com/Adapptor/react-native-streetview",
 	"license": "MIT",
 	"main": "index.js",
 	"repository": {
