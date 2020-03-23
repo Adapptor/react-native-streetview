@@ -64,15 +64,6 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
     }
 
     @Override
-    public void requestLayout() {
-      super.requestLayout();
-  
-      // Required for correct requestLayout
-      // H/T https://github.com/facebook/react-native/issues/4990#issuecomment-180415510
-      post(measureAndLayout);
-    }
-
-    @Override
     public void onStreetViewPanoramaReady(StreetViewPanorama p) {
         panorama = p;
         panorama.setPanningGesturesEnabled(allGesturesEnabled);
@@ -163,25 +154,4 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
           }
 
     }
-
-    float getFloat(ReadableMap map, String property, float defaultValue) {
-        return map.hasKey(property) ? (float) map.getDouble(property)
-                                    : defaultValue;
-    }
-
-    public void setCamera(ReadableMap camera) {
-
-        if (camera == null) return;
-
-        float bearing = getFloat(camera, "heading", 0);
-        float tilt = getFloat(camera, "pitch", 0);
-        float zoom = getFloat(camera, "zoom", 1.0f);
-
-        this.camera = new StreetViewPanoramaCamera.Builder()
-            .bearing(bearing)
-            .tilt(tilt)
-            .zoom(zoom)
-            .build();
-    }
-
 }
