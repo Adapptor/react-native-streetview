@@ -15,20 +15,23 @@ const propTypes = {
 
 	// Center point
 	coordinate: PropTypes.shape({
-		latitude: PropTypes.number.isRequired,
-		longitude: PropTypes.number.isRequired,
+	   latitude: PropTypes.number.isRequired,
+	   longitude: PropTypes.number.isRequired,
+	   // Search radius (meters) around coordinate.
+	   radius: PropTypes.number,
 	}),
-
-	// Camera
-	camera: PropTypes.shape({
-		heading: PropTypes.number,
-		pitch: PropTypes.number,
-		zoom: PropTypes.number,
-		fov: PropTypes.number,
+	pov: PropTypes.shape({
+	   tilt: PropTypes.number.isRequired,
+	   bearing: PropTypes.number.isRequired,
+	   zoom: PropTypes.number.isRequired,
 	}),
-
 	// Allowing user gestures (panning, zooming)
 	allGesturesEnabled: PropTypes.bool,
+
+	heading: PropTypes.number,
+
+	onError: PropTypes.func,
+	onSuccess: PropTypes.func
 };
 
 class StreetView extends React.Component {
@@ -44,4 +47,11 @@ class StreetView extends React.Component {
 
 StreetView.propTypes = propTypes;
 
-module.exports = requireNativeComponent('NSTStreetView', StreetView);
+const cfg = {
+    nativeOnly: {
+        onError: true,
+        onSuccess: true,
+    }
+};
+
+module.exports = requireNativeComponent('NSTStreetView', StreetView, cfg);

@@ -1,18 +1,20 @@
 apply plugin: 'com.android.library'
 
+def safeExtGet(prop, fallback) {
+  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 27
+        minSdkVersion safeExtGet('minSdkVersion', 16)
+        targetSdkVersion safeExtGet('targetSdkVersion', 28)
     }
 }
 
 dependencies {
-    provided 'com.facebook.react:react-native:+'
-    compile 'com.google.android.gms:play-services-base:+'
-    compile 'com.google.android.gms:play-services-maps:+'
-    api("com.android.support:appcompat-v7:28.0.0")
+    implementation "com.facebook.react:react-native:+"
+    implementation "com.google.android.gms:play-services-base:${safeExtGet('playServicesVersion', '17.0.0')}"
+    implementation "com.google.android.gms:play-services-maps:${safeExtGet('playServicesVersion', '17.0.0')}"
 }

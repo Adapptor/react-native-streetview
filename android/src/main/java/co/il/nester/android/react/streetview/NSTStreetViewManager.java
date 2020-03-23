@@ -8,10 +8,16 @@
 
 package co.il.nester.android.react.streetview;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
+
+import java.util.Map;
+
+import javax.annotation.Nullable;
 
 public class NSTStreetViewManager extends SimpleViewManager<NSTStreetView> {
 
@@ -36,9 +42,17 @@ public class NSTStreetViewManager extends SimpleViewManager<NSTStreetView> {
     public void setCoordinate(NSTStreetView view, ReadableMap coordinate) {
         view.setCoordinate(coordinate);
     }
+    @ReactProp(name = "pov")
+        public void setPov(NSTStreetView view, ReadableMap pov) {
+            view.setPov(pov);
+        }
 
-    @ReactProp(name = "camera")
-    public void setCamera(NSTStreetView view, ReadableMap camera) {
-        view.setCamera(camera);
+    @Override
+    public @Nullable
+    Map getExportedCustomDirectEventTypeConstants() {
+        return MapBuilder.of(
+                NSTStreetViewEvent.eventNameForType(NSTStreetViewEvent.ON_ERROR), MapBuilder.of("registrationName", "onStreetViewError"),
+                NSTStreetViewEvent.eventNameForType(NSTStreetViewEvent.ON_SUCCESS), MapBuilder.of("registrationName", "onStreetViewSuccess")
+        );
     }
 }

@@ -1,7 +1,8 @@
 
 {
 	"name": "react-native-streetview",
-	"version": "0.1.4",
+	"version": "0.2.1",
+	"homepage": "https://github.com/nesterapp/react-native-streetview",
 	"description": "Google Panorama/StreetView component for React Native",
 	"author": "Amit Palomo <amit@nester.co.il>",
   "homepage": "https://github.com/Adapptor/react-native-streetview",
@@ -28,7 +29,7 @@
 		"gms-services"
 	],
 	"peerDependencies": {
-		"react": "16.2.0",
-		"react-native": "^0.52.0"
+		"react": "*",
+		"react-native": "*"
 	}
 }
