@@ -68,7 +68,7 @@ import StreetView from 'react-native-streetview';
     pov={{
 	tilt:parseFloat(0),
 	bearing:parseFloat(0),
-	zoom:parseInt(1)
+	zoom:parseInt(0)
     }}
   />
 </View>

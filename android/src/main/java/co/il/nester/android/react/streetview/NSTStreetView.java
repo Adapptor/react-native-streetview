@@ -33,8 +33,8 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
     // default value
     private int radius = 50;
     private float tilt = 0 ;
-    private float bearing = 0 ;
-    private Integer zoom = 1;
+    private float bearing = 0;
+    private Integer zoom = 0;
     private Boolean started = false;
 
     public NSTStreetView(Context context) {
@@ -52,7 +52,7 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
               MeasureSpec.makeMeasureSpec(getHeight(), MeasureSpec.EXACTLY));
           layout(getLeft(), getTop(), getRight(), getBottom());
         }
-      };
+    };
 
     @Override
     public void requestLayout() {
@@ -104,7 +104,7 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
             this.panorama.setPosition(coordinate, radius);
         }
 
-       long duration = 1000;
+       long duration = 0;
        if (bearing > 0) {
              StreetViewPanoramaCamera camera = new StreetViewPanoramaCamera.Builder()
            .zoom(zoom)
@@ -143,7 +143,7 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
         bearing = (float) pov.getDouble("bearing");
         zoom = pov.getInt("zoom");
 
-        long duration = 1000;
+        long duration = 0;
          if (bearing > 0 && this.started) {
              StreetViewPanoramaCamera camera = new StreetViewPanoramaCamera.Builder()
              .zoom(zoom)
