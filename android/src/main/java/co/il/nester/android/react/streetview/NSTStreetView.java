@@ -100,7 +100,7 @@ public class NSTStreetView extends StreetViewPanoramaView implements OnStreetVie
 
         float bearing = getFloat(camera, "heading", 0);
         float tilt = getFloat(camera, "pitch", 0);
-        float zoom = getFloat(camera, "zoom", 1.0f);
+        float zoom = getFloat(camera, "zoom", 0.0f);
 
         this.camera = new StreetViewPanoramaCamera.Builder()
             .bearing(bearing)

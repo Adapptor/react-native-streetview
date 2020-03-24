@@ -13,7 +13,7 @@ RCT_CONVERTER(CLLocationDirection, CLLocationDirection, doubleValue);
     //  Read values and set defaults
     CLLocationDirection heading = [self CLLocationDirection:json[@"heading"]];
     double pitch = hasPitch ? [self double:json[@"pitch"]] : 0;
-    float zoom = hasZoom ? [self float:json[@"zoom"]] : 1.0f;
+    float zoom = hasZoom ? [self float:json[@"zoom"]] : 0.0f;
     double fov = hasFov ? [self double:json[@"fov"]] : 90.0;
     
     return [GMSPanoramaCamera cameraWithHeading:heading pitch:pitch zoom:zoom FOV:fov];
